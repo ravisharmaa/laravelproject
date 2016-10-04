@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use Illuminate\Http\Request;
 use Auth;
+use App\Http\Requests\UserLoginRequest;
 
 
 class LoginController extends Controller
@@ -28,7 +28,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/dashboard';
+    protected $redirectTo = 'admin/dashboard';
 
     /**
      * Create a new controller instance.
@@ -46,13 +46,13 @@ class LoginController extends Controller
         return view ('auth.login');
     }
 
-    public function store(Request $request)
+    public function store(UserLoginRequest $request)
     {
       
       $data= $request->only('email', 'password');
       
       if(Auth::attempt($data)){
-        return "is logged in";
+        $this->redirectTo;
       }else{
         return back()->withInput();
       }

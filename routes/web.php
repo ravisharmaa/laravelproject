@@ -10,16 +10,16 @@
 | to using a Closure or controller method. Build something great!
 |
 */
-
-
 // Auth::routes();
-
 Route:: get('/login', 'Auth\LoginController@getForm');
-Route:: post('admin/login', ['as'=>'admin.login','uses'=>'Auth\LoginController@store' ]);
-Route:: get('/logout', function(){
+Route:: post('/login', ['as'=>'admin.login','uses'=>'Auth\LoginController@store' ]);
+Route:: get('admin/logout', function(){
 	Auth::logout();
 	return view('auth.login');
 });
-Route:: get('dashboard', function(){
-	return "This is dashboard";
+// Basic Routing for preventing un-authorized
+users
+Route:: group(['prefix'=>'admin', 'middleware'=>'auth'], function() {
+	Route:: get('/dashboard', 'DashboardController@invoke');
+
 });

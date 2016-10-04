@@ -23,5 +23,4 @@
         <!--/span-->
     </div><!--/row-->
 </div><!--/fluid-row-->
-
 </div><!--/.fluid-container-->
