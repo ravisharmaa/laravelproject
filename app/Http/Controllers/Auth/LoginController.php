@@ -52,9 +52,9 @@ class LoginController extends Controller
       $data= $request->only('email', 'password');
       
       if(Auth::attempt($data)){
-        $this->redirectTo;
+        return redirect()->route('admin.dashboard');
       }else{
-        return back()->withInput();
+        return back()->withInput()->withErrors();
       }
       
     }
