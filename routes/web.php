@@ -20,8 +20,12 @@ Route:: get('admin/logout', function(){
 // Basic Routing for preventing un-authorized users
 Route:: group(['prefix'=>'admin', 'middleware'=>'auth'], function() {
 	Route:: get('/dashboard', ['as'=>'admin.dashboard', 'uses'=>'Admin\AdminBaseController@home']);
-	Route:: get('todo/index', ['as'=>'todo.index', 'uses'=>'Admin\ToDOController@index']);
-	Route:: get('todo/create', ['as'=>'todo.create', 'uses'=>'Admin\ToDOController@create']);
-	Route:: post('todo/save', ['as'=>'todo.store', 'uses'=>'Admin\ToDOController@store']);
+	Route:: get('todo/index', 		['as'=>'todo.index', 'uses'=>'Admin\ToDOController@index']);
+	Route:: get('todo/create', 		['as'=>'todo.create', 'uses'=>'Admin\ToDOController@create']);
+	Route:: post('todo/save', 		['as'=>'todo.store', 'uses'=>'Admin\ToDOController@store']);
+	Route:: get('todo/edit/{todo}', 	['as'=>'todo.edit', 'uses'=>'Admin\ToDOController@edit']);
+	Route:: get('todo/show/{todo}',	['as'=>'todo.show',	'uses'=>'Admin\ToDOController@show']);
+	Route:: get('todo/delete/{todo}',	['as'=>'todo.delete', 'uses'=>'Admin\ToDOController@destroy']);
+	Route:: put('todo/update/{todo}',	['as'=>'todo.update','uses'=>'Admin\ToDOController@update']);
 
 });

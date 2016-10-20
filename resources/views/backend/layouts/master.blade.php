@@ -48,12 +48,6 @@
 @include('backend.includes.sidebar')
 @yield('dashboard-menu')
 @yield('main-content')
-
-@yield(flash_message)
-    @if(Session::has('successMessage'))
-        <div class="alert alert-succcess">
-            {{Session:: get('sucessMessage')}}
-    @endif
     <footer class="row">
         <p class="col-md-9 col-sm-9 col-xs-12 copyright">&copy; <a href="http://usman.it" target="_blank">Ravi Sharma</a> 2016</p>
 

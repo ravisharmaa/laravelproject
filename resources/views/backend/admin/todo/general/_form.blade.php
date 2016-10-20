@@ -4,7 +4,7 @@
 </div>
 <div class="form-group">
 {{Form:: label('desc','Work Description')}}
-{{Form:: textarea('desc',null,['placeholder'=>'Enter Work Description','class'=>'form-control'])}}
+{{Form:: textarea('description',null,['placeholder'=>'Enter Work Description','class'=>'form-control'])}}
 </div>
 
 <div class="form-group">

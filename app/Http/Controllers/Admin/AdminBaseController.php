@@ -11,6 +11,10 @@ class AdminBaseController extends AppBaseController
     /**
      * @return view
      */
+   	protected $htmlSuccess;
+   	protected $htmlFaliure;
+
+
    public function home()
    {
        return view('backend.admin.dashboard');
@@ -18,12 +22,12 @@ class AdminBaseController extends AppBaseController
 
    public function successMessage()
    {
-   		Session:: flash('success_message', 'Your entry has been successfully created');
+   	$this->htmlSuccess= Session:: flash('success_message', 'Your entry has been successfully created');
    }
 
    public function faliureMessage()
    {
-   		Session:: flash('faliure_message', 'Your entry could not be created');
+   	$this->htmlFaliure= Session:: flash('faliure_message', 'Your entry could not be created');
    }
 
 }

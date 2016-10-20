@@ -23,11 +23,23 @@ class ToDoCreateRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'title' =>'required',
-            'desc'  =>'required',
-            'rank'  =>'required',
+        $rules=
+        [
+            'title'         =>'required',
+            'description'   =>'required',
+            'rank'          =>'required',
         ];
+       
+
+        if($this->todo)
+        {
+            $rules=
+            [
+                'title'=>'required',
+                'rank'  =>  'required'
+            ];
+        }
+        return $rules;
     }
 
 
