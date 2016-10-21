@@ -11,6 +11,6 @@ class ToDo extends Model
 							'title',
 							'description',
 							'status',
-							'rank',
+							'rank'
 						];
 }

@@ -60,10 +60,10 @@ class ToDOController extends AdminBaseController
         return view('backend.admin.todo.general.show')->with('todo', $todo);
     }
 
-    public function destroy($id)
+    public function destroy(ToDo $todo)
     {
-        $data= ToDo::FindOrFail($id);
-        $data->delete();
+        
+        $todo->delete();
         Session:: flash('flash_message','Your record has been deleted');
         return redirect()->route('todo.index');
     }
