@@ -70,23 +70,32 @@
 
 @endsection
 @section('modal-box')
-<div class="modal hide fade" id="mymodal">
-        <div class="modal-header">
-            <button class="close" data-dismiss="modal">&times;</button>
-            <h3>Create Note</h3>
-        </div>
-        <div class="modal-body">
-            <h5>This is modal body</h5>
-        </div>
-        <div class="modal-footer">
-            <button class="btn btn-primary">Close</button>
-        </div>
+<div id="mymodal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Create Note</h4>
+      </div>
+      <div class="modal-body">
+        {{Form:: open(['route'=>'todo.store', 'method'=>'post', 'role'=>'form-role'])}}
+            @include('backend.admin.todo.general._form',['submitButton'=>'Save Values'])
+        {{Form:: close()}}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
 </div>
 @endsection
 
 @section('extra-scripts')
     <!-- {{Html:: script('assets/backend/js/jquery-2.2.3.min.js')}} -->
 <script type="text/javascript">
-    alert('foo');
+    
 </script>
 @endsection
