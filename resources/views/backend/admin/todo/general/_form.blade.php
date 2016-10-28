@@ -17,3 +17,4 @@
     {{Form:: number('rank', null,['placeholder'=>'Enter Rank Here', 'class'=>'form-control'])}}
 </div>
 {{Form:: button($submitButton,['class'=>'btn btn-primary','name'=>'save','type'=>'submit'])}}
+{{Form:: button('Reset',['class'=>'btn btn-danger','name'=>'save','type'=>'reset'])}}

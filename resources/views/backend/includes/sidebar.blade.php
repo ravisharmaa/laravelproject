@@ -12,6 +12,10 @@
                         </li>
                         <li><a class="ajax-link" href="{{url('admin/todo/index')}}"><i class="glyphicon glyphicon-eye-open"></i><span> To do List</span></a>
                         </li>
+                        <li><a class="ajax-link" href="{{route('config.edit')}}"><i class="glyphicon glyphicon-wrench"></i><span> Site Settings</span></a>
+                        </li>
+                        <li><a class="ajax-link" href="{{route('note.index')}}"><i class="glyphicon glyphicon-envelope"></i><span> Note Settings</span></a>
+                        </li>
                         <li><a class="ajax-link" href="{{url('admin/logout')}}"><i class="glyphicon glyphicon-off"></i><span> Log Out</span></a>
                         </li>
                     </ul>
@@ -26,4 +30,6 @@
 
     
 </div>
+
+
  

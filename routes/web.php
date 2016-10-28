@@ -27,5 +27,12 @@ Route:: group(['prefix'=>'admin', 'middleware'=>'auth'], function() {
 	Route:: get('todo/show/{todo}',	['as'=>'todo.show',	'uses'=>'Admin\ToDOController@show']);
 	Route:: get('todo/delete/{todo}',	['as'=>'todo.delete', 'uses'=>'Admin\ToDOController@destroy']);
 	Route:: put('todo/update/{todo}',	['as'=>'todo.update','uses'=>'Admin\ToDOController@update']);
-
+	Route:: get('site-config/edit',			['as'=>'config.edit', 'uses'=>'Admin\ConfigController@edit']);
+	Route:: post('site-config/create',		['as'=>'config.create', 'uses'=>'Admin\ConfigController@store']);
+	Route:: put('site-config/update/{id}', 	['as'=>'config.update', 'uses'=>'Admin\ConfigController@store']);
+	Route:: get('note/index',				['as'=>'note.index', 'uses'=>'Admin\NoteController@index']);
+	
+	Route:: get('/test', function(){
+		echo AppHelper::message('success', 'Hello');
+	});
 });

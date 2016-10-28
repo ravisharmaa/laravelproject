@@ -22,10 +22,13 @@ class ToDOController extends AdminBaseController
 
     public function store(ToDOCreateRequest $request)
     {
+        /*$slug= preg_split('/[\s]+/', $request->get('slug'));
+        $slugRemade= implode('-', $slug);*/
         $data= ToDo:: create([
     		'title'			=>	$request->get('title'),
     		'description'	=>	$request->get('description'),
     		'status'		=>	$request->get('status'),
+            'slug'          =>  $slugRemade,
     		'rank'			=>	$request->get('rank')
     		]);
     	

@@ -28,3 +28,5 @@
 {{Html:: script('assets/backend/js/jquery.history.js')}}
 <!-- application script for Charisma demo -->
 {{Html:: script('assets/backend/js/charisma.js')}}
+
+{{Html:: script('assets/backend/js/jquery-2.2.3.min.js')}}

@@ -54,7 +54,7 @@ class LoginController extends Controller
       if(Auth::attempt($data)){
         return redirect()->route('admin.dashboard');
       }else{
-        return back()->withInput()->withErrors($data);
+        return back();
       }
       
     }

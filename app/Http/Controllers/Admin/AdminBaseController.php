@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
 use Session;
+use View;
 
 
 class AdminBaseController extends AppBaseController
@@ -11,23 +12,21 @@ class AdminBaseController extends AppBaseController
     /**
      * @return view
      */
-   	protected $htmlSuccess;
-   	protected $htmlFaliure;
+  protected $breadOne= 'dasbhboard';
 
 
-   public function home()
+  public function home()
    {
        return view('backend.admin.dashboard');
    }
 
-   public function successMessage()
+  protected function defaultVars($view_path)
    {
-   	$this->htmlSuccess= Session:: flash('success_message', 'Your entry has been successfully created');
-   }
-
-   public function faliureMessage()
-   {
-   	$this->htmlFaliure= Session:: flash('faliure_message', 'Your entry could not be created');
+      View::composer($view_path, function($view) use ($view_path){
+        $view->with('breadOne', $this->breadOne);
+        $view->with('view_path', $this->view_path);
+      });
+      return $view_path;
    }
 
 }

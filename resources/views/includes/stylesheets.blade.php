@@ -19,14 +19,13 @@
     {{Html:: style('assets/backend/css/noty_theme_default.css')}}
     {{Html:: style('assets/backend/css/elfinder.min.css')}}
     {{Html:: style('assets/backend/css/elfinder.theme.css')}}
-    {{Html:: style('assets/backend/elfinder.theme.css')}}
-    {{Html:: style('assets/backend/jquery.iphone')}}
+    {{Html:: style('assets/backend/css/elfinder.theme.css')}}
+    {{Html:: style('assets/backend/css/jquery.iphone.toggle.css')}}
     {{Html:: style('assets/backend/css/uploadify.css')}}
-    {{Html:: style('assets/backend/animate.min.css')}}
+    {{Html:: style('assets/backend/css/animate.min.css')}}
     <!-- jQuery -->
-    {{Html:: script('assets/backend/bower_components/jqery/jqery.min.js')}}
+    {{Html:: script('assets/backend/bower_components/jquery/jquery.min.js')}}
     
     <!-- The fav icon -->
     <link rel="shortcut icon" href="img/favicon.ico">
-
 </head>
