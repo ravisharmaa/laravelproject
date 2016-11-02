@@ -2,8 +2,7 @@
 @section('main-content')
 <div class="box col-md-12">
             <div class="box-inner">
-           
-                <div class="box-header well" data-original-title="">
+                 <div class="box-header well" data-original-title="">
                     <h2><i class="glyphicon glyphicon-user"></i> Listings</h2>
 
                     <div class="box-icon">
@@ -16,8 +15,10 @@
                     {{Session:: get('flash_message')}}
                 </div>
                  @endif
-                 <a class="btn btn-success" href="#mymodal" data-toggle="modal"><i class="glyphicon glyphicon-pencil"></i>
-                    Create Work </a>
+                 <!-- <a class="btn btn-success" href="#mymodal" data-toggle="modal"><i class="glyphicon glyphicon-pencil"></i>
+                    Create Work </a> -->
+                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#mymodal"><i class="glyphicon glyphicon-pencil"></i>
+                    Create Work</button>
                 <div class="box-content" style="display: block;">
                     <table class="table table-striped table-bordered responsive">
                         <thead>
@@ -70,10 +71,8 @@
 
 @endsection
 @section('modal-box')
-<div id="mymodal" class="modal fade" role="dialog">
+<div  class="modal" id="mymodal" tabindex="-1" role="dialog">
   <div class="modal-dialog">
-
-    <!-- Modal content-->
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -91,8 +90,9 @@
 @endsection
 
 @section('extra-scripts')
-    <!-- {{Html:: script('assets/backend/js/jquery-2.2.3.min.js')}} -->
 <script type="text/javascript">
-    
+   /* $('document').ready(function(){
+        alert('hello');
+    });*/
 </script>
 @endsection

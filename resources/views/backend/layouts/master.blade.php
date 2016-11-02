@@ -44,6 +44,5 @@
     </footer>
 
 </div>
-@yield('modal-box')
 @yield('extra-scripts')
 @include('includes.script')

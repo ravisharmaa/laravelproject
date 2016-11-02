@@ -14,7 +14,7 @@
             <div class="box-content">
                 @include('errors.error')
                 {{Form:: open(['route'=>'todo.store', 'method'=>'post', 'role'=>'form-role'])}}
-                @include('backend.admin.todo.general._form',['submitButton'=>'Save Values'])
+                    @include('backend.admin.todo.general._form',['submitButton'=>'Save Values'])
                 {{Form:: close()}}
 
             </div>
