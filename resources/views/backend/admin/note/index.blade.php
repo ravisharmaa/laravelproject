@@ -10,20 +10,12 @@
                         <a href="#" class="btn btn-close btn-round btn-default"><i class="glyphicon glyphicon-remove"></i></a>
                     </div>
                 </div>
-                 @if(Session::has('flash_message'))
-                <div class="alert alert-success">
-                    {{Session:: get('flash_message')}}
-                </div>
-                 @endif
-                 <!-- <a class="btn btn-success" href="#mymodal" data-toggle="modal"><i class="glyphicon glyphicon-pencil"></i>
-                    Create Work </a> -->
-                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#mymodal"><i class="glyphicon glyphicon-pencil"></i>
-                    Create Work</button>
                 <div class="box-content" style="display: block;">
+                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#create_note"><i class="glyphicon glyphicon-ok"></i> Create Note</button> <br/> <br/>
+                    @include('backend.admin.note.modalbox')
                     <table class="table table-striped table-bordered responsive">
                         <thead>
                         <tr>
-                       
                             <th>S.No</th>
                             <th>Note Title</th>
                             <th>Note Description</th>
@@ -33,10 +25,7 @@
                         </tr>
                         </thead>
                         <tbody>
-
-                       
-                        <tr>
-                       
+                        <tr>                   
                             <td></td>
                             <td class="center"></td>
                             <td class="center"></td>
@@ -44,8 +33,6 @@
                             <td class="center">
                                 <span class="label-warning label label-default">Active</span>
                             </td>
-                           
-                           
                             <td class="center">
                                 <a class="btn btn-success" href="#">
                                     <i class="glyphicon glyphicon-zoom-in icon-white"></i>
@@ -60,39 +47,22 @@
                                     Delete
                                 </a>
                             </td>
-                      
-                        </tr>
+                         </tr>
                         </tbody>
                     </table>
-                </div>
-                
+                </div>    
             </div>
         </div>
 
 @endsection
-@section('modal-box')
-<div  class="modal" id="mymodal" tabindex="-1" role="dialog">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Create Note</h4>
-      </div>
-      <div class="modal-body">
-        {{Form:: open(['route'=>'todo.store', 'method'=>'post', 'role'=>'form-role'])}}
-            @include('backend.admin.todo.general._form',['submitButton'=>'Save Values'])
-        {{Form:: close()}}
-      </div>
-    </div>
-
-  </div>
-</div>
-@endsection
-
 @section('extra-scripts')
 <script type="text/javascript">
-   /* $('document').ready(function(){
-        alert('hello');
-    });*/
+    $('document').ready(function(){
+        $('#save-btn').click(function(e){
+            e.preventDefault();
+        });
+    });
+
 </script>
 @endsection
+

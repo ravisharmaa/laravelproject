@@ -16,9 +16,9 @@
                     {{Session:: get('flash_message')}}
                 </div>
                  @endif
-                 <a class="btn btn-success" href="{{route('todo.create')}}"><i class="glyphicon glyphicon-pencil"></i>
-                    Create Work </a>
                 <div class="box-content" style="display: block;">
+                <a class="btn btn-success" href="{{route('todo.create')}}"><i class="glyphicon glyphicon-pencil"></i>
+                    Create Note</a> <br/> <br/>
                     <table class="table table-striped table-bordered responsive">
                         <thead>
                         <tr>

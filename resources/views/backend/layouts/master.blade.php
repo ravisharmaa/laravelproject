@@ -14,11 +14,8 @@
     <div class="navbar navbar-default" role="navigation">
 
         <div class="navbar-inner">
-            
-            <a class="navbar-brand" href="{{url('admin/dashboard')}}"> <img alt="Charisma Logo" src="img/logo20.png" class="hidden-xs"/>
+              <a class="navbar-brand" href="{{url('admin/dashboard')}}"> <img alt="Charisma Logo" src="img/logo20.png" class="hidden-xs"/>
                 <span>Admin</span></a>
-
-            <!-- user dropdown starts -->
             <div class="btn-group pull-right">
                 <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">
                     <i class="glyphicon glyphicon-user"></i><span class="hidden-sm hidden-xs"> admin</span>
@@ -44,5 +41,5 @@
     </footer>
 
 </div>
-@yield('extra-scripts')
 @include('includes.script')
+@yield('extra-scripts')

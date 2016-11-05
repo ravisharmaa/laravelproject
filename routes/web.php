@@ -31,8 +31,9 @@ Route:: group(['prefix'=>'admin', 'middleware'=>'auth'], function() {
 	Route:: post('site-config/create',		['as'=>'config.create', 'uses'=>'Admin\ConfigController@store']);
 	Route:: put('site-config/update/{id}', 	['as'=>'config.update', 'uses'=>'Admin\ConfigController@store']);
 	Route:: get('note/index',				['as'=>'note.index', 'uses'=>'Admin\NoteController@index']);
+	Route::post('note/save',
+				['as'=>'note.store',
+				 'uses'=>'Admin\NoteController@store'
+				]);
 	
-	Route:: get('/test', function(){
-		echo AppHelper::message('success', 'Hello');
-	});
 });
