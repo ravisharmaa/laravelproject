@@ -18,10 +18,11 @@ class NoteController extends AdminBaseController
     	return view(parent::defaultVars($this->view_path. '.index'))->with('flash' ,$flash);
     }
 
-    function store(NoteRequest $request)
+    public function store(NoteRequest $request)
     {
     	dd($request);
     }
+
 
     
 

@@ -35,5 +35,6 @@ Route:: group(['prefix'=>'admin', 'middleware'=>'auth'], function() {
 				['as'=>'note.store',
 				 'uses'=>'Admin\NoteController@store'
 				]);
+	Route::resource('gallery', 'Admin\GalleryController');
 	
 });

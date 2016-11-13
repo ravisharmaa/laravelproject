@@ -16,6 +16,8 @@
                         </li>
                         <li><a class="ajax-link" href="{{route('note.index')}}"><i class="glyphicon glyphicon-envelope"></i><span> Note Settings</span></a>
                         </li>
+                        <li><a class="ajax-link" href="{{route('gallery.index')}}"><i class="glyphicon glyphicon-picture"></i><span> Gallery Management</span></a>
+                        </li>
                         <li><a class="ajax-link" href="{{url('admin/logout')}}"><i class="glyphicon glyphicon-off"></i><span> Log Out</span></a>
                         </li>
                     </ul>
