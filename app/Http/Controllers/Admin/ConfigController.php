@@ -1,9 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
 use App\Http\Requests\Config\ConfigRequest;
 use App\Http\Controllers\Admin\AdminBaseController;
@@ -35,7 +33,7 @@ class ConfigController extends AdminBaseController
       			'facebook' 		=> 	$request->get('facebook'),
 		      	'twitter' 		=>	$request->get('twitter'),
 		      	'about_desc' 	=> 	$request->get('about_desc'),
-		     	    'mail' 		=> 	$request->get('mail'),
+		     	   'mail' 		   => 	$request->get('mail'),
 		      	'gplus' 		=>	$request->get('gplus')
    				]);
 	   		if($data){
