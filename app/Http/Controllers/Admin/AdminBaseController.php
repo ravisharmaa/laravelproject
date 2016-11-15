@@ -25,6 +25,7 @@ class AdminBaseController extends AppBaseController
       View::composer($view_path, function($view) use ($view_path){
         $view->with('breadOne', $this->breadOne);
         $view->with('view_path', $this->view_path);
+        $view->with('imageUrl', $this->imageUrl);
       });
       return $view_path;
    }

@@ -21,12 +21,14 @@ class GalleryController extends AdminBaseController
      */
 
     protected $view_path= 'backend.admin.gallery';
-    protected $imagePath= '\public\uploads\gallery';
-    
+    protected $imagePath= '/public/uploads/gallery';
+    protected $imageUrl= 'public/uploads/gallery';
 
     public function index()
     {
-        return view(parent::defaultVars($this->view_path. '.index'));
+        $data=[];
+        $data['row']= Gallery:: orderBy('id','asc')->get();
+        return view(parent::defaultVars($this->view_path. '.index'), compact('data'));
     }
 
     /**
@@ -45,7 +47,7 @@ class GalleryController extends AdminBaseController
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(GalleryRequest $request)
     {
        if($request->hasFile('image')){
         $image= $request->file('image');
@@ -57,7 +59,6 @@ class GalleryController extends AdminBaseController
                 Image::make(base_path().$this->imagePath.'/'.$file)->resize(Config::get('image.gallery_width'), Config::get('image.gallery_height'))->save($upload);
             }
        }
-
        $data= Gallery::create([
         'title'     =>  $request->get('title'),
         'rank'      =>  $request->get('rank'),
@@ -67,7 +68,7 @@ class GalleryController extends AdminBaseController
 
        if($data)
        {
-            Session::flash('success_message', 'Image Uploaded Successfully');
+            Session::flash('flash_message', 'Image Uploaded Successfully');
             return redirect()->route('gallery.index');
        } else {
             Session::flash('error_message', 'Could not complete your request');
@@ -101,7 +102,8 @@ class GalleryController extends AdminBaseController
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  $gallery Gallery
+     * Used Route Model Binding 
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -115,8 +117,12 @@ class GalleryController extends AdminBaseController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Gallery $gallery)
     {
-        //
+        File:: delete(base_path().$this->imagePath.'/'.$gallery->image);
+        $gallery->delete();
+        Session::flash('flash_message', 'Image Deleted Successfully');
+        return redirect()->route('gallery.index');
+        
     }
 }

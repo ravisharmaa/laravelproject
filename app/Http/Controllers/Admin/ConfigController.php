@@ -14,6 +14,7 @@ class ConfigController extends AdminBaseController
 {
    protected $view_path= 'backend.admin.config';
    protected $breadOne= 'dashboard';
+   protected $imageUrl= '';
    
    public function edit()
    {

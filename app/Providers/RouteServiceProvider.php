@@ -23,10 +23,9 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
-
         parent::boot();
         Route:: model('todo','App\Model\ToDo');
+        Route:: model('gallery', 'App\Model\Gallery');
     }
 
     /**
