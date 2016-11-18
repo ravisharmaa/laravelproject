@@ -48,15 +48,15 @@
                             </td>
                             @endif
                             <td class="center">
-                                <a class="btn btn-success" href="{{route('todo.show',$d->title)}}">
+                                <a class="btn btn-success" href="{{route('todo.show',$d->slug)}}">
                                     <i class="glyphicon glyphicon-zoom-in icon-white"></i>
                                     View
                                 </a>
-                                <a class="btn btn-info" href="{{route('todo.edit',$d->title)}}">
+                                <a class="btn btn-info" href="{{route('todo.edit',$d->slug)}}">
                                     <i class="glyphicon glyphicon-edit icon-white"></i>
                                     Edit
                                 </a>
-                                <a class="btn btn-danger" href="{{route('todo.delete',$d->title)}}">
+                                <a class="btn btn-danger" href="{{route('todo.delete',$d->slug)}}">
                                     <i class="glyphicon glyphicon-trash icon-white"></i>
                                     Delete
                                 </a>

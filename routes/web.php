@@ -36,5 +36,6 @@ Route:: group(['prefix'=>'admin', 'middleware'=>'auth'], function() {
 				 'uses'=>'Admin\NoteController@store'
 				]);
 	Route::resource('gallery', 'Admin\GalleryController');
+	Route::resource('jcrop', 'Admin\JcropController');
 	
 });

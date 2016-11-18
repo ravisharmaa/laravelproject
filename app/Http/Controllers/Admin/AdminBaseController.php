@@ -30,4 +30,29 @@ class AdminBaseController extends AppBaseController
       return $view_path;
    }
 
+  /*public function generateSlug($input)
+  {
+    $text= preg_replace('~[^\pL\d]+~u','-',$input);
+    $text= implode('-', $text);
+    echo $text;
+    die;
+      if(empty($text)){
+        return 'n-a';
+      }
+    
+    return $text;
+  }*/
+
+  public function generateSlug($input)
+  {
+    $input= trim($input);
+    $slug= preg_replace('~[^\pL\d]+~u', '-', $input);
+      if(empty($slug)){
+        return false;
+      }
+    return $slug;
+  }
+
+
+
 }

@@ -11,7 +11,7 @@ class ToDOController extends AdminBaseController
 {
     public function index()
     {
-    	$data= ToDo:: orderBy('rank', 'created_at', 'desc')->paginate(3);
+    	$data= ToDo:: orderBy('rank','asc')->paginate(3);
     	return view('backend.admin.todo.index', compact('data'));
     }
 
@@ -20,15 +20,14 @@ class ToDOController extends AdminBaseController
     	return view('backend.admin.todo.create');
     }
 
-    public function store(ToDOCreateRequest $request)
+    public function store(ToDoCreateRequest $request)
     {
-        /*$slug= preg_split('/[\s]+/', $request->get('slug'));
-        $slugRemade= implode('-', $slug);*/
+        $slug= $this->generateSlug($request->get('title'));
         $data= ToDo:: create([
     		'title'			=>	$request->get('title'),
     		'description'	=>	$request->get('description'),
     		'status'		=>	$request->get('status'),
-            'slug'          =>  $slugRemade,
+            'slug'          =>  $slug,
     		'rank'			=>	$request->get('rank')
     		]);
     	

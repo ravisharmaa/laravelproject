@@ -21,7 +21,7 @@
                     </div>
                 @endif
                 <div class="box-content" style="display: block;">
-                <a class="btn btn-success" href="{{route('gallery.create')}}"><i class="glyphicon glyphicon-pencil"></i>
+                <a class="btn btn-success" href="{{route('jcrop.create')}}"><i class="glyphicon glyphicon-pencil"></i>
                     Gallery Creation Form</a> <br/> <br/>
                     <table class="table table-striped table-bordered responsive">
                         <thead>
@@ -53,11 +53,11 @@
                             </td>
                             @endif 
                             <td class="center">
-                                <a class="btn btn-info" href="{{route('gallery.edit',$d->title)}}">
+                                <a class="btn btn-info" href="{{route('jcrop.edit',$d->title)}}">
                                     <i class="glyphicon glyphicon-edit icon-white"></i>
                                     Edit
                                 </a>
-                        {{Form::open(['method' => 'DELETE', 'route'=>['gallery.destroy', $d->title]])}}
+                        {{Form::open(['method' => 'DELETE', 'route'=>['jcrop.destroy', $d->title]])}}
                         {{Form::submit('Delete', ['class' => 'btn btn-danger'])}}
                         {{Form::close()}}
                             </td>

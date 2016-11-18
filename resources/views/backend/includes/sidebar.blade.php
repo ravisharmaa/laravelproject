@@ -18,6 +18,8 @@
                         </li>
                         <li><a class="ajax-link" href="{{route('gallery.index')}}"><i class="glyphicon glyphicon-picture"></i><span> Gallery Management</span></a>
                         </li>
+                        <li><a class="ajax-link" href="{{route('jcrop.index')}}"><i class="glyphicon glyphicon-film"></i><span> Testing Jcrop</span></a>
+                        </li>
                         <li><a class="ajax-link" href="{{url('admin/logout')}}"><i class="glyphicon glyphicon-off"></i><span> Log Out</span></a>
                         </li>
                     </ul>

@@ -22,7 +22,7 @@ class GalleryController extends AdminBaseController
 
     protected $view_path= 'backend.admin.gallery';
     protected $imagePath= '/public/uploads/gallery';
-    protected $imageUrl= 'public/uploads/gallery';
+    protected $imageUrl= 'uploads/gallery';
 
     public function index()
     {
@@ -63,6 +63,7 @@ class GalleryController extends AdminBaseController
         'title'     =>  $request->get('title'),
         'rank'      =>  $request->get('rank'),
         'image'     =>  $file,
+        'slug'      =>  $this->generateSlug($request->get('title')),
         'status'    => $request->get('status')
         ]);
 
@@ -93,9 +94,9 @@ class GalleryController extends AdminBaseController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Gallery $gallery)
     {
-        //
+        return view(parent::defaultVars($this->view_path. '.edit'), compact('gallery'));
     }
 
     /**

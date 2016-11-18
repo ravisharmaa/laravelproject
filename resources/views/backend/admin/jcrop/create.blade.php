@@ -13,11 +13,17 @@
             </div>
             <div class="box-content">
                 @include('errors.error')
-                {{Form:: open(['route'=>'gallery.store', 'method'=>'post', 'role'=>'form-role', 'enctype'=>'multipart/form-data'])}}
-                    @include('backend.admin.gallery.general._form',['submitButton'=>'Save Values'])
+                {{Form:: open(['route'=>'jcrop.store', 'method'=>'post', 'role'=>'form-role', 'enctype'=>'multipart/form-data'])}}
+                    @include('backend.admin.jcrop.general._form',['submitButton'=>'Save Values'])
                 {{Form:: close()}}
-
-            </div>
+             </div>
         </div>
     </div>
+@endsection
+@section('extra-scripts')
+<script type="text/javascript">
+    $("document").ready(function(){
+        console.log('hello');
+    });
+</script>
 @endsection

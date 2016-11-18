@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\AdminBaseController;
 class NoteController extends AdminBaseController
 {
     protected $view_path= 'backend.admin.note';
+    protected $imageUrl=null;
 
     public function index()
     {
