@@ -1,9 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Admin\AdminBaseController;
@@ -20,7 +18,7 @@ class JcropController extends AdminBaseController
      * @return \Illuminate\Http\Response
      */
     protected $view_path    = 'backend.admin.jcrop';
-    protected $imagePath   = '\public\uploads\jcrop';
+    protected $imagePath    = '\public\uploads\jcrop';
     protected $imageUrl     = 'uploads\jcrop';
     
     public function index()
@@ -51,9 +49,10 @@ class JcropController extends AdminBaseController
     {
       if($request->hasFile('image')){
             $image= $this->saveImage($request->file('image'));
+            $file= base_path(). $this->imagePath.'/' .$image->getFileName();
             if($image){
-            Session::put('image',$image);
-            return view(parent::defaultVars($this->view_path.'.crop-image'));
+                return response()->json(['success'=>'true', 'file'=>$file]);
+                // return Response::json(['success'=>'true', 'file'=>base_path(). $this->imagePath.'/'.$image]);
         }
       }
         

@@ -31,3 +31,4 @@
 
 {{Html:: script('assets/backend/js/jquery-2.2.3.min.js')}}
 {{Html:: script('assets/backend/Jcrop/js/jquery.Jcrop.js')}}
+{{Html:: script('assets/backend/form-master/jquery.form.js')}}

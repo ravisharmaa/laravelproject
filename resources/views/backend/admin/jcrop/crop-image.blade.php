@@ -1,10 +1,10 @@
 @extends('backend.layouts.master')
 @section('main-content')
 <div class="row">
-    <div class="box col-md-9">
+    <div class="box col-md-12">
         <div class="box-inner">
             <div class="box-header well" data-original-title="">
-                <h2><i class="glyphicon glyphicon-font"></i> Typography</h2>
+                <h2><i class="glyphicon glyphicon-font"></i> Image Crop</h2>
 
                 <div class="box-icon">
                     <a href="#" class="btn btn-setting btn-round btn-default"><i
@@ -17,33 +17,23 @@
             </div>
             <div class="box-content">
                 <div class="page-header">
-                    <h1>Typography
-                        <small>Headings, paragraphs, lists, and other inline type elements</small>
-                    </h1>
+                    <h1>Crop Image</h1>
                 </div>
                 <div class="row ">
                     <div class="col-md-4">
-                        <h3>Sample text and paragraphs</h3>
-
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor,
-                            quis ullamcorper ligula sodales at. Nulla tellus elit, varius non commodo eget, mattis vel
-                            eros. In sed ornare nulla. Donec consectetur, velit a pharetra ultricies, diam lorem lacinia
-                            risus, ac commodo orci erat eu massa. Sed sit amet nulla ipsum. Donec felis mauris,
-                            vulputate sed tempor at, aliquam a ligula. Pellentesque non pulvinar nisi.
-                        </p>
-
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor,
-                            quis ullamcorper ligula sodales at. Nulla tellus elit, varius non commodo eget, mattis vel
-                            eros. In sed ornare nulla. Donec consectetur, velit a pharetra ultricies, diam lorem lacinia
-                            risus, ac commodo orci erat eu massa. Sed sit amet nulla ipsum. Donec felis mauris,
-                            vulputate sed tempor at, aliquam a ligula. Pellentesque non pulvinar nisi.
-                        </p>
+                        
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+@endsection
+@section('extra-scripts')
+<script type="text/javascript">
+    $("document").ready(function(){
+        alert('hello');
+    });
+</script>
+
 @endsection

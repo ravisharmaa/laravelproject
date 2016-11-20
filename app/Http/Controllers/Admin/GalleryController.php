@@ -47,7 +47,7 @@ class GalleryController extends AdminBaseController
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(GalleryRequest $request)
+    public function store(Request $request)
     {
        if($request->hasFile('image')){
         $image= $request->file('image');
@@ -55,6 +55,7 @@ class GalleryController extends AdminBaseController
         $imgFile= pathinfo($imgFile, PATHINFO_FILENAME);
         $file= Str::slug(Str::random(8).$imgFile). '.'.$image->getClientOriginalExtension();
         $upload= $image->move(base_path().$this->imagePath, $file);
+        
             if($upload){
                 Image::make(base_path().$this->imagePath.'/'.$file)->resize(Config::get('image.gallery_width'), Config::get('image.gallery_height'))->save($upload);
             }

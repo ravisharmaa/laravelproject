@@ -53,11 +53,11 @@
                             </td>
                             @endif 
                             <td class="center">
-                                <a class="btn btn-info" href="{{route('gallery.edit',$d->title)}}">
+                                <a class="btn btn-info" href="{{route('gallery.edit',$d->slug)}}">
                                     <i class="glyphicon glyphicon-edit icon-white"></i>
                                     Edit
                                 </a>
-                        {{Form::open(['method' => 'DELETE', 'route'=>['gallery.destroy', $d->title]])}}
+                        {{Form::open(['method' => 'DELETE', 'route'=>['gallery.destroy', $d->slug]])}}
                         {{Form::submit('Delete', ['class' => 'btn btn-danger'])}}
                         {{Form::close()}}
                             </td>

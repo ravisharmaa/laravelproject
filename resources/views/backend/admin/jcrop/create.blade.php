@@ -12,18 +12,88 @@
                 </div>
             </div>
             <div class="box-content">
+            <div id="validation-errors"></div>
                 @include('errors.error')
-                {{Form:: open(['route'=>'jcrop.store', 'method'=>'post', 'role'=>'form-role', 'enctype'=>'multipart/form-data'])}}
+                {{Form:: open(['route'=>'jcrop.store', 'method'=>'post','id'=>'upload','role'=>'form-role', 'enctype'=>'multipart/form-data'])}}
                     @include('backend.admin.jcrop.general._form',['submitButton'=>'Save Values'])
                 {{Form:: close()}}
              </div>
+             <div id="output"></div>
         </div>
     </div>
 @endsection
+
+{{-- @section('extra-scripts')
+<script type="text/javascript">
+    $("document").ready(function(){
+        var options= {
+            beforeSubmit: showRequest,
+            success:    showResponse,
+            dataType: 'json'
+        };
+        $("#image").change(function(){
+            $("#upload").ajaxForm(options).submit();
+        });
+    });
+
+    function showRequest(formData, jqForm, options){
+        $("#validation-errors").hide().empty();
+        return true;
+    }
+
+    function showResponse(responce, statusText, xhr, $form){
+        if(response.success==false)
+        {
+            
+            var arr= response.errors;
+            $.each(arr, function(index, value){
+                if(value.length=!0){
+                    $("#validation-errors").append('<div class="alert alert-danger">+value+</div');
+                }
+            });
+            $("#validation-errors").show();
+        }else{
+            $("#output").html("<img src='"+response.file+"'/>");
+        }
+    }
+</script>
+@endsection --}}
+
 @section('extra-scripts')
 <script type="text/javascript">
     $("document").ready(function(){
-        console.log('hello');
+        var options= {
+            beforeSubmit: showRequest,
+            success:    showResponse,
+            dataType: 'json'
+        };
+            $("#image").change(function(){
+            $("#upload").ajaxForm(options).submit();
+        });
     });
+
+    function showRequest(formData, jqForm, options){
+        $("#validation-errors").hide().empty();
+        return true;
+    }
+
+    function showResponse(response, statusText, xhr, $form){
+        if(response.success==false)
+        {
+            
+            var arr= response.errors;
+            $.each(arr, function(index, value){
+                if(value.length=!0){
+                    $("#validation-errors").append('<div class="alert alert-danger">+value+</div');
+                }
+            });
+            $("#validation-errors").show();
+        }else{
+            console.log(response.file);
+            $("#output").html("<img src='"+response.file+"'/>");
+        }
+    }
 </script>
+
 @endsection
+
