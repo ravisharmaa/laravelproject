@@ -19,7 +19,7 @@ class JcropController extends AdminBaseController
      */
     protected $view_path    = 'backend.admin.jcrop';
     protected $imagePath    = '\public\uploads\jcrop';
-    protected $imageUrl     = 'uploads\jcrop';
+    protected $imageUrl     = '\uploads\jcrop\\';
     
     public function index()
     {
@@ -49,8 +49,10 @@ class JcropController extends AdminBaseController
     {
       if($request->hasFile('image')){
             $image= $this->saveImage($request->file('image'));
-            $file= base_path(). $this->imagePath.'/' .$image->getFileName();
-            if($image){
+            // $file= url('/public').$this->imageUrl.'/' .$image->getFileName();
+            // $file= asset('public/uploads/jcrop/'). '/'.$image->getFileName();
+            $file= public_path().$this->imageUrl .$image->getFileName();
+            if(File::exists($file)){
                 return response()->json(['success'=>'true', 'file'=>$file]);
                 // return Response::json(['success'=>'true', 'file'=>base_path(). $this->imagePath.'/'.$image]);
         }

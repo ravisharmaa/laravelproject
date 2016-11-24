@@ -89,7 +89,7 @@
             });
             $("#validation-errors").show();
         }else{
-            console.log(response.file);
+            console.log(response);
             $("#output").html("<img src='"+response.file+"'/>");
         }
     }
