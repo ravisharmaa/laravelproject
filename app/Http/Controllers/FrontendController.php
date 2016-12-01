@@ -2,30 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Model\Gallery;
 
 class FrontendController extends Controller
 {
-   	public function index()
-    {
-    	$gallery = Gallery::orderBy('id','asc')->get();
-    	return view('frontend.index', compact('gallery'));
-    } 
 
-    public function details($slug=null)
+    public function index()
     {
-    	if(is_null($slug)){
-    		return '404';
-    	}else{
-    		return 
-    	}
+        $gallery = Gallery::orderBy('id', 'asc')->get();
+        return view('frontend.index', compact('gallery'));
     }
 
-    public function text()
+    public function details($slug)
     {
-    	$this->text=	'text';
-    	
+        $gallery = Gallery::where('slug', $slug)->get();
+        return view('frontend.gallery.details', compact('gallery'));
+
     }
 
 }
