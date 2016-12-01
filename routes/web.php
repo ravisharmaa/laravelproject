@@ -17,6 +17,12 @@ Route:: get('admin/logout', function(){
 	Auth::logout();
 	return view('auth.login');
 });
+
+//Routing Structure For Frontend
+	Route::get('/', ['as'=>'site.home', 'uses'=>'FrontendController@index']);
+	Route::get('gallery/details/{slug}', ['as'=>'gallery.details', 'uses'=>'FrontendController@details']);
+
+
 // Basic Routing for preventing un-authorized users
 Route:: group(['prefix'=>'admin', 'middleware'=>'auth'], function() {
 	Route:: get('/dashboard', ['as'=>'admin.dashboard', 'uses'=>'Admin\AdminBaseController@home']);

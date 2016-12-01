@@ -1,16 +1,15 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-use Illuminate\Support\Str;
-use Illuminate\Http\Request;
-use App\Http\Requests\Gallery\GalleryRequest;
-use App\Http\Controllers\Controller;
+
 use App\Http\Controllers\Admin\AdminBaseController;
-use Image, File, Config;
 use App\Model\Gallery;
+use Config;
+use File;
+use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+use Image;
 use Session;
-
-
 
 class GalleryController extends AdminBaseController
 {
@@ -20,15 +19,17 @@ class GalleryController extends AdminBaseController
      * @return \Illuminate\Http\Response
      */
 
-    protected $view_path= 'backend.admin.gallery';
-    protected $imagePath= '/public/uploads/gallery';
-    protected $imageUrl= 'uploads/gallery';
+    protected $view_path = 'backend.admin.gallery';
+    protected $imagePath = '/public/uploads/gallery';
+    protected $imageUrl  = 'uploads/gallery';
+    // private $imgConfigs     =  Config::get('image.gallery'));
 
     public function index()
     {
-        $data=[];
-        $data['row']= Gallery:: orderBy('id','asc')->get();
-        return view(parent::defaultVars($this->view_path. '.index'), compact('data'));
+        // dd(Config::get('image.gallery'));
+        $data        = [];
+        $data['row'] = Gallery::orderBy('id', 'asc')->get();
+        return view(parent::defaultVars($this->view_path . '.index'), compact('data'));
     }
 
     /**
@@ -37,8 +38,8 @@ class GalleryController extends AdminBaseController
      * @return \Illuminate\Http\Response
      */
     public function create()
-    { 
-        return view(parent::defaultVars($this->view_path. '.create'));
+    {
+        return view(parent::defaultVars($this->view_path . '.create'));
     }
 
     /**
@@ -49,33 +50,31 @@ class GalleryController extends AdminBaseController
      */
     public function store(Request $request)
     {
-       if($request->hasFile('image')){
-        $image= $request->file('image');
-        $imgFile= $image->getClientOriginalName();
-        $imgFile= pathinfo($imgFile, PATHINFO_FILENAME);
-        $file= Str::slug(Str::random(8).$imgFile). '.'.$image->getClientOriginalExtension();
-        $upload= $image->move(base_path().$this->imagePath, $file);
-        
-            if($upload){
-                Image::make(base_path().$this->imagePath.'/'.$file)->resize(Config::get('image.gallery_width'), Config::get('image.gallery_height'))->save($upload);
+        if ($request->hasFile('image')) {
+            $image   = $request->file('image');
+            $imgFile = $image->getClientOriginalName();
+            $imgFile = pathinfo($imgFile, PATHINFO_FILENAME);
+            $file    = Str::slug(Str::random(8) . $imgFile) . '.' . $image->getClientOriginalExtension();
+            $upload  = $image->move(base_path() . $this->imagePath, $file);
+            if ($upload) {
+                Image::make(base_path() . $this->imagePath . '/' . $file)->resize(Config::get('image.gallery_width'), Config::get('image.gallery_height'))->save($upload);
             }
-       }
-       $data= Gallery::create([
-        'title'     =>  $request->get('title'),
-        'rank'      =>  $request->get('rank'),
-        'image'     =>  $file,
-        'slug'      =>  $this->generateSlug($request->get('title')),
-        'status'    => $request->get('status')
+        }
+        $data = Gallery::create([
+            'title'  => $request->get('title'),
+            'rank'   => $request->get('rank'),
+            'image'  => $file,
+            'slug'   => $this->generateSlug($request->get('title')),
+            'status' => $request->get('status'),
         ]);
 
-       if($data)
-       {
+        if ($data) {
             Session::flash('flash_message', 'Image Uploaded Successfully');
             return redirect()->route('gallery.index');
-       } else {
+        } else {
             Session::flash('error_message', 'Could not complete your request');
             return redirect()->route('gallery.create');
-       }
+        }
     }
 
     /**
@@ -97,7 +96,7 @@ class GalleryController extends AdminBaseController
      */
     public function edit(Gallery $gallery)
     {
-        return view(parent::defaultVars($this->view_path. '.edit'), compact('gallery'));
+        return view(parent::defaultVars($this->view_path . '.edit'), compact('gallery'));
     }
 
     /**
@@ -105,7 +104,7 @@ class GalleryController extends AdminBaseController
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  $gallery Gallery
-     * Used Route Model Binding 
+     * Used Route Model Binding
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -121,10 +120,10 @@ class GalleryController extends AdminBaseController
      */
     public function destroy(Gallery $gallery)
     {
-        File:: delete(base_path().$this->imagePath.'/'.$gallery->image);
+        File::delete(base_path() . $this->imagePath . '/' . $gallery->image);
         $gallery->delete();
         Session::flash('flash_message', 'Image Deleted Successfully');
         return redirect()->route('gallery.index');
-        
+
     }
 }
