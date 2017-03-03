@@ -30,15 +30,9 @@ class ToDOController extends AdminBaseController
             'slug'          =>  $slug,
     		'rank'			=>	$request->get('rank')
     		]);
-    	
-		
-		if($data){
-    		Session:: flash('flash_message', 'Your record has been created');
-    		return redirect()->route('todo.index');
-    	}else{
-    		Session:: flash('flash_message', 'Your record could not be created');
-    		return redirect()->route('todo.create');
-    	}
+
+
+		return redirect()->route('todo.index')->with(['success_message','Good Work']);
     	
     }
 

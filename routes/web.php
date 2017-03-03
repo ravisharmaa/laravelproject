@@ -37,10 +37,64 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::put('site-config/update/{id}', ['as' => 'config.update', 'uses' => 'Admin\ConfigController@store']);
     Route::get('note/index', ['as' => 'note.index', 'uses' => 'Admin\NoteController@index']);
     Route::post('note/save',
-        ['as'  => 'note.store',
-            'uses' => 'Admin\NoteController@store',
-        ]);
+                            [       'as'  => 'note.store',
+                                    'uses' => 'Admin\NoteController@store',
+                             ]);
     Route::resource('gallery', 'Admin\GalleryController');
     Route::resource('jcrop', 'Admin\JcropController');
+
+
+    $this->get('artist/index', [
+        'as'    =>  'artist.index',
+        'uses'  =>  'Admin\ArtistController@index'
+    ]);
+
+    $this->get('artist/create', [
+                'as'    =>  'artist.create',
+                'uses'  =>  'Admin\ArtistController@create'
+    ]);
+    $this->post('artist/save', [
+                'as'    =>  'artist.save',
+                'uses'  =>  'Admin\ArtistController@save'
+    ]);
+
+    $this->get('artist/edit/{id}', [
+                'as'    =>  'artist.edit',
+                'uses'  =>  'Admin\ArtistController@edit'
+    ]);
+
+    $this->put('artist/update/{id}', [
+                'as'    =>  'artist.update',
+                'uses'  =>  'Admin\ArtistController@update'
+    ]);
+
+    $this->get('artist/delete/{id}', [
+                'as'    =>  'artist.delete',
+                'uses'  =>  'Admin\ArtistController@update'
+    ]);
+
+    $this->get('album/create', [
+                'as'    =>  'album.create',
+                'uses'  =>  'Admin\AlbumController@create'
+    ]);
+    $this->post('album/save', [
+                'as'    =>  'album.save',
+                'uses'  =>  'Admin\AlbumController@save'
+    ]);
+
+    $this->get('album/edit/{id}', [
+                'as'    =>  'album.edit',
+                'uses'  =>  'Admin\AlbumController@edit'
+    ]);
+
+    $this->put('album/update/{id}', [
+                'as'    =>  'album.update',
+                'uses'  =>  'Admin\AlbumController@update'
+    ]);
+
+    $this->get('album/delete/{id}', [
+                'as'    =>  'album.delete',
+                'uses'  =>  'Admin\AlbumController@update'
+    ]);
 
 });

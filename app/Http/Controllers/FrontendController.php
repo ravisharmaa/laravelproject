@@ -16,7 +16,7 @@ class FrontendController extends Controller
     public function details($slug)
     {
         $gallery = Gallery::where('slug', $slug)->get();
-        return view('frontend.gallery.details', compact('gallery'));
+        dd($gallery);
 
     }
 

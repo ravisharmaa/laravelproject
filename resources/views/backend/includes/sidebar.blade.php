@@ -20,6 +20,10 @@
                         </li>
                         <li><a class="ajax-link" href="{{route('jcrop.index')}}"><i class="glyphicon glyphicon-film"></i><span> Testing Jcrop</span></a>
                         </li>
+                        <li><a class="ajax-link" href="{{route('artist.index')}}"><i class="glyphicon glyphicon-user"></i><span> Artist</span></a>
+                        </li>
+                        <li><a class="ajax-link" href="{{route('album.create')}}"><i class="glyphicon glyphicon-image"></i><span> Album</span></a>
+                        </li>
                         <li><a class="ajax-link" href="{{url('admin/logout')}}"><i class="glyphicon glyphicon-off"></i><span> Log Out</span></a>
                         </li>
                     </ul>

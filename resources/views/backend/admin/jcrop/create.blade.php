@@ -16,6 +16,7 @@
                 @include('errors.error')
                 {{Form:: open(['route'=>'jcrop.store', 'method'=>'post','id'=>'upload','role'=>'form-role', 'enctype'=>'multipart/form-data'])}}
                     @include('backend.admin.jcrop.general._form',['submitButton'=>'Save Values'])
+
                 {{Form:: close()}}
              </div>
              <div id="output"></div>
@@ -67,6 +68,7 @@
             success:    showResponse,
             dataType: 'json'
         };
+
             $("#image").change(function(){
             $("#upload").ajaxForm(options).submit();
         });
@@ -80,7 +82,7 @@
     function showResponse(response, statusText, xhr, $form){
         if(response.success==false)
         {
-            
+        
             var arr= response.errors;
             $.each(arr, function(index, value){
                 if(value.length=!0){

@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Image;
 use Session;
+use DB;
 
 class GalleryController extends AdminBaseController
 {
@@ -50,6 +51,7 @@ class GalleryController extends AdminBaseController
      */
     public function store(Request $request)
     {
+        $file= null;
         if ($request->hasFile('image')) {
             $image   = $request->file('image');
             $imgFile = $image->getClientOriginalName();
@@ -60,9 +62,17 @@ class GalleryController extends AdminBaseController
                 Image::make(base_path() . $this->imagePath . '/' . $file)->resize(Config::get('image.gallery_width'), Config::get('image.gallery_height'))->save($upload);
             }
         }
+        $rank_data = Gallery::select(DB::raw('id,max(rank)'));
+        dd($rank_data);
+        if(is_null($rank_data)){
+            $rank_data = 1;
+        } else {
+
+        }
+
         $data = Gallery::create([
             'title'  => $request->get('title'),
-            'rank'   => $request->get('rank'),
+            'rank'   => $rank_data,
             'image'  => $file,
             'slug'   => $this->generateSlug($request->get('title')),
             'status' => $request->get('status'),
